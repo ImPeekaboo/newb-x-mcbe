@@ -95,6 +95,7 @@
 #define NL_LANTERN_WAVE 0.16   // [toggle] 0.05 subtle ~ 0.4 large swing
 #define NL_WAVE_SPEED 2.8      // 0.5 slow wave ~ 5.0 very fast wave
 //#define NL_EXTRA_PLANTS_WAVE // [toggle] !dont use! wave using texture coords (1.21.0 vanilla 2048x1024)
+#define NL_WAVE_RANGE 13.0     // 6.0 upto 6 blocks ~ 32.0 upto 32 blocks away (slower)
 
 /* Water */
 #define NL_WATER_TRANSPARENCY 0.9 // 0.0 transparent ~ 1.0 normal
@@ -191,7 +192,7 @@
 
 /* Entity (Actor, ItemInHand) */
 #define NL_ENTITY_BRIGHTNESS     0.65 // 0.1 dark ~ 1.6 bright
-#define NL_ENTITY_EDGE_HIGHLIGHT 0.41 // 0.0 no highlight ~ 1.6 bright highlight
+#define NL_ENTITY_EDGE_HIGHLIGHT 0.41 // [toggle] 0.0 no highlight ~ 1.6 bright highlight
 
 /* Weather particles */
 #define NL_WEATHER_SPECK 0.6         // [toggle] 0.0 vanilla texture ~ 1.0 soft speck
@@ -214,6 +215,19 @@
   Subpack names and flags are inside `pack_config.toml`.
   Build tool will enable corresponding flags when compiling.
 */
+
+#ifdef LITE
+  #define NO_WAVE
+  #undef NL_GLOW_SHIMMER
+  #undef NL_LAVA_NOISE
+  #undef NL_WEATHER_SPECK
+  #undef NL_SHOOTING_STAR
+  #undef NL_WATER_CLOUD_REFLECTION
+  #undef NL_UNDERWATER_STREAKS
+  #undef NL_RAIN_MIST_OPACITY
+  #undef NL_CLOUDY_FOG
+  #undef NL_ENTITY_EDGE_HIGHLIGHT
+#endif
 
 #ifdef NO_WAVE_NO_FOG
   #define NO_WAVE
